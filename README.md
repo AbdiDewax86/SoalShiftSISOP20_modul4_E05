@@ -1,6 +1,12 @@
 # SoalShiftSISOP20_modul4_E05
 ## Soal 1
 #### Encrypt dan Decrypt versi 1:
+Semua file yang berada dalam direktori ter enkripsi menggunakan caesar cipher dengan key.
+Caesar Cipher :
+```
+9(ku@AW1[Lmvgax6q`5Y2Ry?+sF!^HKQiBXCUSe&0M.b%rI'7d)o4~VfZ*{#:}ETt$3J-zpc]lnh8,GwP_ND|jO
+```
+Fungsi encrypt dan decrypt :
 ```
 //fungsi untuk decrypt
 char* Decrypt(char dec[100]){
@@ -50,8 +56,8 @@ char* Encrypt(char enc[100]){
     return enc;
 }
 ```
-Cara kerja fungsi encrypt ialah, dengan mengecek diposisi manakah posisi huruf teks[i] pada huruf caesar (anggap di posisi j), kemudian menggantikan huruf pada teks[i] dengan huruf caesar yang berada pada j+10.
-Fungsi decrypt ialah fungsi untuk mengembalikan nama yang telah terenkripsi menjadi seperti semula, cara kerjanya ialah dengan mengecek di posisi manakah huruf teks[i] yang telah terenkripsi pada huruf caesar, kemudian dikembalikan lagi dengan cara mengubahnya dengan huruf caesar yang berada pada j-10.
+Cara kerja fungsi encrypt ialah, dengan mengecek diposisi manakah huruf teks[i] pada huruf caesar (anggap di posisi j), kemudian menggantikan huruf pada teks[i] dengan huruf caesar yang berada pada posisi j+10.
+Fungsi decrypt ialah fungsi untuk mengembalikan nama yang telah terenkripsi menjadi seperti semula, cara kerjanya ialah dengan mengecek di posisi manakah huruf teks[i] yang telah terenkripsi pada huruf caesar, kemudian dikembalikan lagi dengan cara mengubahnya dengan huruf caesar yang berada pada posisi j-10.
 
 Misal kan ada file bernama “kelincilucu.jpg” dalam directory FOTO_PENTING, dan key yang dipakai adalah 10
 “encv1_rahasia/FOTO_PENTING/kelincilucu.jpg” => “encv1_rahasia/ULlL@u]AlZA(/g7D.|_.Da_a.jpg
@@ -120,12 +126,12 @@ char *checkEncryptslash(char fpath[100],const char *path)
             }
             rev[i] = path[i];
         }
-        //mengambil path folder enkripsi
+        //mengambil nama folder terenkripsi
         sprintf(fname,"%s",rev);
         memset(rev,'\0',100);
         j=0;
 
-        //jika terdapat foler/file pada folder enkripsi
+        //jika terdapat folder/file pada folder enkripsi
         //maka nama path diambil
         if (i!=strlen(path))
         {
@@ -138,9 +144,9 @@ char *checkEncryptslash(char fpath[100],const char *path)
                     break;
                 }
             }
-            //mengenkripsi nama path didalam folder enkripsi
+            //mengenkripsi nama path didalam folder enkripsi (child path)
             Encrypt(rev);
-            //menggabungkan fullpath folder enkripsi
+            //menggabungkan child path dengan path folder terenkripsi
             strcat(fname,rev);
             //menggabungkan fullpath dengan directory
             sprintf(fpath, "%s%s", dirpath, fname);
